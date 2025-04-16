@@ -4,8 +4,8 @@ $$
     [\text{Stmt}] &\to
     \begin{cases}
         \text{exit}([\text{Expr}]); \\
-        [\text{Type}] \text{ \{ident\}}; \\
-        [\text{Type}] \text{ \{ident\} = } [\text{Expr}]; \\
+        [\text{Decl}] \\
+        [\text{Assig}]
     \end{cases} \\
     [\text{Expr}] &\to
     \begin{cases}
@@ -25,12 +25,14 @@ $$
         [\text{Expr}] + [\text{Expr}] & \text{prec} = 0 \\
         [\text{Expr}] - [\text{Expr}] & \text{prec} = 0 \\
     \end{cases} \\
-    [\text{Type}] &\to
+    [\text{Decl}] &\to
     \begin{cases}
-        \text{boolean} \\
-        \text{char} \\
-        \text{int} \\
-        \text{float} \\
+        (\text{Type}) \text{ \{ident\}}; \\
+        (\text{Type}) \text{ \{ident\} = } [\text{Expr}]; \\
+    \end{cases} \\
+    [\text{Assig}] &\to
+    \begin{cases}
+        \text{\{ident\}} = [\text{Expr}]
     \end{cases}
 \end{align}
 $$

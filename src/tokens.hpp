@@ -16,7 +16,8 @@ enum class TokenType {
     ASTERISK,
     FSLASH,
     MOD,
-    PRIM_INT,
+    PRIM_TYPE,
+    EQUALS
 };
 
 inline std::string toString(const TokenType type) {
@@ -43,6 +44,10 @@ inline std::string toString(const TokenType type) {
             return "FSLASH";
         case TokenType::MOD:
             return "MOD";
+        case TokenType::PRIM_TYPE:
+            return "PRIM_TYPE";
+        case TokenType::EQUALS:
+            return "EQUALS";
     }
     assert(false);
 }

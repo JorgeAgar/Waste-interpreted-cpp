@@ -24,7 +24,7 @@ class Tokenizer {
                     buffer.clear();
                 }
                 else if (buffer == "int") {
-                    tokens.push(Token(TokenType::PRIM_INT, m_lineNum));
+                    tokens.push(Token(TokenType::PRIM_TYPE, m_lineNum, "int"));
                     buffer.clear();
                 }
                 else {
@@ -58,6 +58,10 @@ class Tokenizer {
             else if (peek().value() == '%') {
                 consume();
                 tokens.push(Token(TokenType::MOD, m_lineNum));
+            }
+            else if (peek().value() == '=') {
+                consume();
+                tokens.push(Token(TokenType::EQUALS, m_lineNum));
             }
             else if (peek().value() == '(') {
                 consume();
