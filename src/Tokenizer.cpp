@@ -23,6 +23,14 @@ class Tokenizer {
                     tokens.push(Token(TokenType::EXIT, m_lineNum));
                     buffer.clear();
                 }
+                else if (buffer == "int") {
+                    tokens.push(Token(TokenType::PRIM_INT, m_lineNum));
+                    buffer.clear();
+                }
+                else {
+                    tokens.push(Token(TokenType::IDENT, m_lineNum, buffer));
+                    buffer.clear();
+                }
             } else if (std::isdigit(peek().value())) {
                 buffer.push_back(consume());
                 while (peek().has_value() && std::isdigit(peek().value())) {
@@ -30,6 +38,26 @@ class Tokenizer {
                 }
                 tokens.push(Token(TokenType::INT_LIT, m_lineNum, buffer));
                 buffer.clear();
+            }
+            else if (peek().value() == '+') {
+                consume();
+                tokens.push(Token(TokenType::PLUS, m_lineNum));
+            }
+            else if (peek().value() == '-') {
+                consume();
+                tokens.push(Token(TokenType::MINUS, m_lineNum));
+            }
+            else if (peek().value() == '*') {
+                consume();
+                tokens.push(Token(TokenType::ASTERISK, m_lineNum));
+            }
+            else if (peek().value() == '/') {
+                consume();
+                tokens.push(Token(TokenType::FSLASH, m_lineNum));
+            }
+            else if (peek().value() == '%') {
+                consume();
+                tokens.push(Token(TokenType::MOD, m_lineNum));
             }
             else if (peek().value() == '(') {
                 consume();
@@ -42,6 +70,9 @@ class Tokenizer {
             else if (peek().value() == ';') {
                 consume();
                 tokens.push(Token(TokenType::SEMICOLON, m_lineNum));
+            }
+            else if (std::isspace(peek().value())) {
+                consume();
             }
         }
 
