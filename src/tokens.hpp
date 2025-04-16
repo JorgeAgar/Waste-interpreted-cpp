@@ -9,7 +9,14 @@ enum class TokenType {
     PAREN_OPEN,
     PAREN_CLOSE,
     SEMICOLON,
-    INT_LIT
+    INT_LIT,
+    IDENT,
+    PLUS,
+    MINUS,
+    ASTERISK,
+    FSLASH,
+    MOD,
+    PRIM_INT,
 };
 
 inline std::string toString(const TokenType type) {
@@ -24,6 +31,18 @@ inline std::string toString(const TokenType type) {
             return "SEMICOLON";
         case TokenType::INT_LIT:
             return "INT_LIT";
+        case TokenType::IDENT:
+            return "IDENT";
+        case TokenType::PLUS:
+            return "PLUS";
+        case TokenType::MINUS:
+            return "MINUS";
+        case TokenType::ASTERISK:
+            return "ASTERISK";
+        case TokenType::FSLASH:
+            return "FSLASH";
+        case TokenType::MOD:
+            return "MOD";
     }
     assert(false);
 }
