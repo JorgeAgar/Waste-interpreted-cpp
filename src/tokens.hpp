@@ -20,6 +20,15 @@ enum class TokenType {
     EQUALS
 };
 
+inline bool isOperator(const TokenType type) {
+    if (type == TokenType::PLUS || type == TokenType::MINUS
+        || type == TokenType::ASTERISK || type == TokenType::FSLASH
+        || type == TokenType::MOD) {
+            return true;
+    }
+    return false;
+}
+
 inline std::string toString(const TokenType type) {
     switch (type) {
         case TokenType::EXIT:
@@ -50,6 +59,19 @@ inline std::string toString(const TokenType type) {
             return "EQUALS";
     }
     assert(false);
+}
+
+inline int opPrec(const TokenType type) {
+    switch (type) {
+        case TokenType::PLUS: return 0;
+        case TokenType::MINUS: return 0;
+        case TokenType::ASTERISK: return 1;
+        case TokenType::FSLASH: return 1;
+        case TokenType::MOD: return 1;
+        default:
+            std::cerr << "[Parse Error] Unrecognized token type: " << toString(type) << std::endl;
+            exit(EXIT_FAILURE);
+    }
 }
 
 struct Token {

@@ -92,7 +92,7 @@ class Tokenizer {
     [[nodiscard]] std::optional<char> peek(const int offset = 0) const
     {
         if (m_index + offset >= m_src.length()) {
-            return {};
+            return std::nullopt;
         }
         return m_src.at(m_index + offset);
     }

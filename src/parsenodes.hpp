@@ -60,7 +60,7 @@ struct NodeBinExpr {
 };
 
 struct NodeExpr {
-    std::variant<NodeDecl, NodeBinExpr> expr;
+    std::variant<NodeBinExpr, NodeTerm> expr;
 };
 
 struct NodeStmtExit {

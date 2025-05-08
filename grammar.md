@@ -32,7 +32,7 @@ $$
     \end{cases} \\
     [\text{Assig}] &\to
     \begin{cases}
-        \text{\{ident\}} = [\text{Expr}]
+        \text{\{ident\}} = [\text{Expr}];
     \end{cases}
 \end{align}
 $$
